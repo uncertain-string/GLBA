@@ -37,14 +37,14 @@ updateAP(){
             llSetLinkPrimitiveParamsFast(link,[
                 PRIM_TEXT,"[GLBA-S] \n AP: " + (string)(hp) + "/" +(string)(hpmax),<0.0,1.0,0.0>,1.0,
                 PRIM_LINK_TARGET, LINK_THIS,
-                PRIM_DESC, "LBA.v.L.2.22," + (string)hp + "," + (string)hpmax + ",0,0"
+                PRIM_DESC, "LBA.v.L.1.3," + (string)hp + "," + (string)hpmax
             ]);
         }
 }
 default{
     state_entry(){
         hp = hpmax;
-        llSetObjectDesc("LBA.v.L.NTLBA.1.02");
+        llSetObjectDesc("LBA.v.L.LBA.1.3");
         me=llGetKey();
         hex=(integer)("0x" + llGetSubString(llMD5String((string)me,0), 0, 3));
         llListen(hex, "","","");
@@ -55,7 +55,7 @@ default{
         llSetLinkPrimitiveParamsFast(link,[
             PRIM_TEXT,"[GLBA-S] \n AP: " + (string)(hp) + "/" +(string)(hpmax),<0.0,1.0,0.0>,1.0,
             PRIM_LINK_TARGET, LINK_THIS,
-            PRIM_DESC, "LBA.v.L.2.22," + (string)hp + "," + (string)hpmax + ",0,0"
+            PRIM_DESC, "LBA.v.L.1.3," + (string)hp + "," + (string)hpmax
         ]);
         llSetTimerEvent(0);
     }
