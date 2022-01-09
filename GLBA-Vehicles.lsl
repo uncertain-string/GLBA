@@ -31,7 +31,7 @@ updateAP(){
 default{
     on_rez(integer s){
         hp = hpmax;
-        llSetObjectDesc("LBA.v.L.NTLBA.1.02");
+        llSetObjectDesc("LBA.v.NTLBA.1.02");
         me=llGetKey();
         hex=(integer)("0x" + llGetSubString(llMD5String((string)me,0), 0, 3));
         llListen(hex, "","","");
