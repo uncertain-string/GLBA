@@ -42,7 +42,7 @@ updateAP(){
         }
 }
 default{
-    state_entry(){
+    on_rez(integer n){
         hp = hpmax;
         llSetObjectDesc("LBA.v.GLBA.1.3");
         me=llGetKey();
