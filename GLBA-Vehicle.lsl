@@ -18,18 +18,31 @@ are permitted provided that the following conditions are met:
    specific prior written permission.
 **/
 integer hp=50;//Current AP
-integer hpmax=50;//Max AP
-integer link=2;//Text Display Link
+integer hpmax=1000;//Max AP
+integer link=0;//Text Display Link
 integer hex;
 key me;
+
+//ensure that we eventually have an update, say we're under a lot of fire and we never hit the timer.
+integer num_hits_without_update=0;
 updateAP(){
         if(hp<1) {
             llDie();
         }
-        llSetTimerEvent(0.15);
+        if(num_hits_without_update < 20) {
+            num_hits_without_update++;
+            llSetTimerEvent(0.15);
+        } else {
+            num_hits_without_update = 0;
+            llSetLinkPrimitiveParamsFast(link,[
+                PRIM_TEXT,"[GLBA-S] \n AP: " + (string)(hp) + "/" +(string)(hpmax),<0.0,1.0,0.0>,1.0,
+                PRIM_LINK_TARGET, LINK_THIS,
+                PRIM_DESC, "LBA.v.2.22," + (string)hp + "," + (string)hpmax
+            ]);
+        }
 }
 default{
-    on_rez(integer s){
+    state_entry(){
         hp = hpmax;
         llSetObjectDesc("LBA.v.NTLBA.1.02");
         me=llGetKey();
@@ -38,8 +51,9 @@ default{
         updateAP();
     }
     timer() {
+        num_hits_without_update = 0;
         llSetLinkPrimitiveParamsFast(link,[
-            PRIM_TEXT,"[GLBA-V] \n AP: " + (string)(hp) + "/" +(string)(hpmax),<0.0,1.0,0.0>,1.0,
+            PRIM_TEXT,"[GLBA-S] \n AP: " + (string)(hp) + "/" +(string)(hpmax),<0.0,1.0,0.0>,1.0,
             PRIM_LINK_TARGET, LINK_THIS,
             PRIM_DESC, "LBA.v.2.22," + (string)hp + "," + (string)hpmax
         ]);
