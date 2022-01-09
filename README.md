@@ -1,6 +1,12 @@
 # GLBA
 A much more performant LBA Slim clone.
 
+# Usage
+## Deployables
+Use [GLBA-Slim.lsl](https://github.com/uncertain-string/GLBA/blob/main/GLBA-Slim.lsl) for deployables (not vehicles)
+## Vehicles
+Use [GLBA-Vehicles.lsl](https://github.com/uncertain-string/GLBA/blob/main/GLBA-Vehicles.lsl) for vehicles
+
 # Stats (All values in ms)
 ## Full Sim Hybrid RC Statistics
 
