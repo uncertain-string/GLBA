@@ -41,7 +41,7 @@ default{
         llSetLinkPrimitiveParamsFast(link,[
             PRIM_TEXT,"[GLBA-S] \n AP: " + (string)(hp) + "/" +(string)(hpmax),<0.0,1.0,0.0>,1.0,
             PRIM_LINK_TARGET, LINK_THIS,
-            PRIM_DESC, "LBA.v.2.22," + (string)hp + "," + (string)hpmax + ",0,0"
+            PRIM_DESC, "LBA.v.2.22," + (string)hp + "," + (string)hpmax
         ]);
         llSetTimerEvent(0);
     }
